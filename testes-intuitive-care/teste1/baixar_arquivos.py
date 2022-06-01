@@ -30,17 +30,18 @@ lista_de_arquivos = ['Anexo_I_Rol_2021RN_465.2021_RN473_RN478_RN480_RN513_RN536.
 BASE_URL = 'https://www.gov.br/ans/pt-br/arquivos/assuntos/consumidor/o-que-seu-plano-deve-cobrir/{}'
 
 # O objetivo é que o código baixe os arquivos solicitados utilizando o nome do arquivo como índice da lista.
-# a biblioteca zipfile foi importada para que os arquivos baixados fossem agrupados num arquivo "Anexos_agrupados.zip", conforme solicitado no teste.
+# a biblioteca zipfile foi importada para que os arquivos baixados fossem agrupados num arquivo "Anexos.zip", conforme solicitado no teste.
 compactado = 'Anexos_agrupados.zip'
 agrupar_arquivos = zipfile.ZipFile(compactado, 'w', zipfile.ZIP_DEFLATED)
 # O for foi utilizado para varrer o vetor lista_de_arquivos a fim de concatenar o nome do arquivo contido nos elementos da lista com o conteúdo da variável BASE_URL, que contém o link para download.
 for item in lista_de_arquivos:
     baixar_arquivos(BASE_URL.format(item), item)
     agrupar_arquivos.write(item)
-    print("Arquivo {} agrupado em {}!".format(item, compactado))
+    print("Arquivo {} agrupado em {}!\n".format(item, compactado))
 
 agrupar_arquivos.close()
-print("Fim.")
+print("Fim da execução.")
+# Fim.
 
 
 
